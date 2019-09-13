@@ -12,7 +12,7 @@ namespace InDepthWin
         
 		public Random r = new Random();
         private int maxcapa = 1;
-        private int randplaces = 10;
+        private int randplaces = 5000;
         private int PInd;
         private int queind = 0;
         private String Qname = null;
@@ -252,7 +252,7 @@ namespace InDepthWin
 
         public void CreateEnemiesONE()
         {
-            for (int i = 0; i < r.Next(randplaces, randplaces*2); i++)
+            for (int i = 0; i < r.Next(randplaces*10, randplaces*20); i++)
             {
                 ListEnemies.Add(new Enemies(i, NAMES[r.Next(0, NAMES.Length)] + " " + NUMBERS[r.Next(0, NUMBERS.Length)], new Coordinates(r.Next(100000, 999999), r.Next(100000, 999999)), r.Next(0, 5)));
             }

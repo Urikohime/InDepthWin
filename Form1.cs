@@ -12,6 +12,7 @@ namespace InDepthWin
 {
     public partial class Form1 : Form
     {
+        Random R = new Random();
         String[] Alliance = { "UEDF", "CONM", "AOBO", "TSIB", "NLFD", "RUOP", "CPMC" };
         String[] Commands = { "MOVE", "LAND", "SHOP", "TALK", "INFO", "QUEST", "DONE", "HELP" };
         Player player = new Player();
@@ -438,10 +439,9 @@ namespace InDepthWin
 
                 foreach(Enemies EN in world.ListEnemies)
                 {
-                    Random R = new Random();
-                    if(R.Next(0, 2) == 1)
+                    if(R.Next(0, 2) == R.Next(0, 2))
                     {
-                        EN.Move();
+                        EN.EXY = new Coordinates(R.Next(EN.EXY.X - 500, EN.EXY.X + 500), R.Next(EN.EXY.Y - 500, EN.EXY.Y + 500));
                     }
                 }
 

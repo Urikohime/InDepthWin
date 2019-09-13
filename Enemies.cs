@@ -51,21 +51,16 @@ namespace InDepthWin
                     break;
 
                 case 2:
-                    ehealth = 175000; eattack = 125; edefence = 50; estorage = 4000;
-                    efirerate = 3; Allegiance = "TSIB";
-                    break;
-
-                case 3:
                     ehealth = 150000; eattack = 175; edefence = 40; estorage = 6000;
                     efirerate = 4; Allegiance = "NLFD";
                     break;
 
-                case 4:
+                case 3:
                     ehealth = 100000; eattack = 150; edefence = 50; estorage = 5000;
                     efirerate = 3; Allegiance = "RUOP";
                     break;
 
-                case 5:
+                case 4:
                     ehealth = 175000; eattack = 190; edefence = 40; estorage = 3000;
                     efirerate = 4; Allegiance = "CPMC";
                     break;
@@ -76,11 +71,6 @@ namespace InDepthWin
                     efirerate = 1; Allegiance = "UEDF";
                     break;
             }
-        }
-
-        public void Move()
-        {
-            EXY = new Coordinates(rand.Next(EXY.X - 500, EXY.X + 500), rand.Next(EXY.Y - 500, EXY.Y + 500));
         }
     }
 }
