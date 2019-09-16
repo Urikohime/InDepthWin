@@ -254,19 +254,10 @@ namespace InDepthWin
         {
             for (int i = 0; i < r.Next(randplaces*10, randplaces*20); i++)
             {
-                ListRandShips.Add(new RandomShip(i, NAMES[r.Next(0, NAMES.Length)] + " " + NUMBERS[r.Next(0, NUMBERS.Length)], new Coordinates(r.Next(100000, 999999), r.Next(100000, 999999)), r.Next(0, 5)));
-            }
-        }
-
-        private void HOSTILES(String Alli)
-        {
-            foreach (RandomShip RS in ListRandShips)
-            {
-                if(RS.Allegiance == Alli)
-                {
-                    RS.Hostile = false;
-                }
-
+                ListRandShips.Add(new RandomShip(i, NAMES[r.Next(0, NAMES.Length)] + " " + NUMBERS[r.Next(0, NUMBERS.Length)],
+                    new Coordinates(r.Next(100000, 999999), r.Next(100000, 999999)),
+                    r.Next(0, 6),
+                    Alli));
             }
         }
 

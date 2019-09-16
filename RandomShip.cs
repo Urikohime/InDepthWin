@@ -19,13 +19,14 @@ namespace InDepthWin
         public bool Hostile;
         public bool Active;
 
-        public RandomShip(int IND, String NAME, Coordinates COORDS, int ALLI)
+        public RandomShip(int IND, String NAME, Coordinates COORDS, int ALLI, String alii)
         {
             Active = true;
             Eindex = IND;
             Ename = NAME;
             EXY = COORDS;
             Alliance(ALLI);
+            Hostile = relation(alii);
             foreach (Item II in INV.InInv)
             {
                 if (II.Type == "AMMO")
@@ -39,6 +40,58 @@ namespace InDepthWin
             }
         }
 
+        private bool relation(String Alli)
+        {
+            bool Returner = false;
+            if (Alli == "UEDF")
+            {
+                if (Allegiance == "RUOP" ||
+                    Allegiance == "NLFD" ||
+                    Allegiance == "CPMC") { Returner = true; }
+                else { Returner = false; }
+            }
+            else if (Alli == "RUOP")
+            {
+                if (Allegiance == "RUOP") { Returner = false; }
+                else { Returner = true; }
+            }
+            else if (Alli == "NLFD")
+            {
+                if (Allegiance == "UEDF" ||
+                    Allegiance == "RUOP" ||
+                    Allegiance == "CONM") { Returner = true; }
+                else { Returner = false; }
+            }
+            else if (Alli == "TSIB")
+            {
+                if (Allegiance == "RUOP") { Returner = true; }
+                else { Returner = false; }
+            }
+            else if (Alli == "AOBO")
+            {
+                if (Allegiance == "RUOP" ||
+                    Allegiance == "CONM") { Returner = true; }
+                else { Returner = false; }
+            }
+            else if (Alli == "CPMC")
+            {
+                if (Allegiance == "UEDF" ||
+                    Allegiance == "RUOP" ||
+                    Allegiance == "CONM") { Returner = true; }
+                else { Returner = false; }
+            }
+            else if (Alli == "CONM")
+            {
+                if (Allegiance == "RUOP" ||
+                    Allegiance == "NLFD" ||
+                    Allegiance == "AOBO" ||
+                    Allegiance == "CPMC" ||
+                    Allegiance == "CONM") { Returner = true; }
+                else { Returner = false; }
+            }
+            return Returner;
+        }
+
         public String IsHostile()
         {
             if (Hostile == true)
@@ -49,14 +102,6 @@ namespace InDepthWin
             {
                 return null;
             }
-        }
-
-        public void HOSTILEYN(int hst)
-        {
-            if(hst == 0)
-            { Hostile = false; }
-            else
-            { Hostile = true; }
         }
 
         public void Alliance(int alli)
@@ -88,8 +133,12 @@ namespace InDepthWin
                     efirerate = 4; Allegiance = "CPMC";
                     break;
 
+                case 5:
+                    ehealth = 200000; eattack = 100; edefence = 60; estorage = 3000;
+                    efirerate = 1; Allegiance = "UEDF";
+                    break;
+
                 default:
-                    Allegiance = "UEDF";
                     ehealth = 200000; eattack = 100; edefence = 60; estorage = 3000;
                     efirerate = 1; Allegiance = "UEDF";
                     break;
