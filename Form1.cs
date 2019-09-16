@@ -57,7 +57,7 @@ namespace InDepthWin
             progressBarStart.Increment(1);
             Thread.Sleep(1000);
 
-            world.CreateEnemiesONE();
+            world.CreateRandomShipsONE(player.Allegiance);
             progressBarStart.Increment(1);
             Thread.Sleep(1000);
         }
@@ -393,7 +393,7 @@ namespace InDepthWin
                     foreach (RandomShip EN in world.ListRandShips)
                     {
                         CommandLog.Text = CommandLog.Text + "\n" +
-                            EN.Ename + " | " + EN.Allegiance + " | " + EN.EXY.CurrentC();
+                            EN.Ename + " | " + EN.Allegiance + " | " + EN.IsHostile() + " | " + EN.EXY.CurrentC();
                     }
 
                     //CommandLog.Text = player.questacitvename + " | " +

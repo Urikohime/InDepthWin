@@ -19,10 +19,9 @@ namespace InDepthWin
         public bool Hostile;
         public bool Active;
 
-        public RandomShip(int IND, String NAME, Coordinates COORDS, int ALLI, int hst)
+        public RandomShip(int IND, String NAME, Coordinates COORDS, int ALLI)
         {
             Active = true;
-            HOSTILEYN(hst);
             Eindex = IND;
             Ename = NAME;
             EXY = COORDS;

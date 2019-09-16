@@ -12,7 +12,7 @@ namespace InDepthWin
         
 		public Random r = new Random();
         private int maxcapa = 1;
-        private int randplaces = 5000;
+        private int randplaces = 10;
         private int PInd;
         private int queind = 0;
         private String Qname = null;
@@ -250,11 +250,23 @@ namespace InDepthWin
             }
         }
 
-        public void CreateEnemiesONE()
+        public void CreateRandomShipsONE(String Alli)
         {
             for (int i = 0; i < r.Next(randplaces*10, randplaces*20); i++)
             {
-                ListRandShips.Add(new RandomShip(i, NAMES[r.Next(0, NAMES.Length)] + " " + NUMBERS[r.Next(0, NUMBERS.Length)], new Coordinates(r.Next(100000, 999999), r.Next(100000, 999999)), r.Next(0, 5), r.Next(0, 2)));
+                ListRandShips.Add(new RandomShip(i, NAMES[r.Next(0, NAMES.Length)] + " " + NUMBERS[r.Next(0, NUMBERS.Length)], new Coordinates(r.Next(100000, 999999), r.Next(100000, 999999)), r.Next(0, 5)));
+            }
+        }
+
+        private void HOSTILES(String Alli)
+        {
+            foreach (RandomShip RS in ListRandShips)
+            {
+                if(RS.Allegiance == Alli)
+                {
+                    RS.Hostile = false;
+                }
+
             }
         }
 
