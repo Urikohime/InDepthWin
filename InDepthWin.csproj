@@ -63,7 +63,7 @@
   <ItemGroup>
     <Compile Include="AllItemsList.cs" />
     <Compile Include="Coordinates.cs" />
-    <Compile Include="Enemies.cs" />
+    <Compile Include="RandomShip.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

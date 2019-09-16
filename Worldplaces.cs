@@ -19,7 +19,7 @@ namespace InDepthWin
 
         public List<People> ListPeople = new List<People>();
 		public List<Place> ListPlaces = new List<Place>();
-        public List<Enemies> ListEnemies = new List<Enemies>();
+        public List<RandomShip> ListRandShips = new List<RandomShip>();
 		AllItemsList AIL = new AllItemsList();
 
         private String[] NAMES = { "Robert", "Vulcan", "Texan", "QUS", "Spade", "Rattler", "Spider" };
@@ -254,7 +254,7 @@ namespace InDepthWin
         {
             for (int i = 0; i < r.Next(randplaces*10, randplaces*20); i++)
             {
-                ListEnemies.Add(new Enemies(i, NAMES[r.Next(0, NAMES.Length)] + " " + NUMBERS[r.Next(0, NUMBERS.Length)], new Coordinates(r.Next(100000, 999999), r.Next(100000, 999999)), r.Next(0, 5)));
+                ListRandShips.Add(new RandomShip(i, NAMES[r.Next(0, NAMES.Length)] + " " + NUMBERS[r.Next(0, NUMBERS.Length)], new Coordinates(r.Next(100000, 999999), r.Next(100000, 999999)), r.Next(0, 5), r.Next(0, 2)));
             }
         }
 

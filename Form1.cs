@@ -390,7 +390,7 @@ namespace InDepthWin
                 if (TerminalIN.Text.ToUpper() == "DEBUG")
                 {
                     CommandLog.Text = "";
-                    foreach (Enemies EN in world.ListEnemies)
+                    foreach (RandomShip EN in world.ListRandShips)
                     {
                         CommandLog.Text = CommandLog.Text + "\n" +
                             EN.Ename + " | " + EN.Allegiance + " | " + EN.EXY.CurrentC();
@@ -437,7 +437,7 @@ namespace InDepthWin
                     }
                 }
 
-                foreach(Enemies EN in world.ListEnemies)
+                foreach(RandomShip EN in world.ListRandShips)
                 {
                     if(R.Next(0, 2) == R.Next(0, 2))
                     {
@@ -480,13 +480,15 @@ namespace InDepthWin
                     NearbyPlaces.Text = NearbyPlaces.Text + world.ListPlaces[i].placename + " at: " + world.ListPlaces[i].placeXY.CurrentC() + "\n";
                 }
             }
-            NearbyPlaces.Text = NearbyPlaces.Text + "\nNearby Enemies:";
-            for (int i = 0; i < world.ListEnemies.Count; i++)
+            NearbyPlaces.Text = NearbyPlaces.Text + "\nNearby Ships:\n";
+            for (int i = 0; i < world.ListRandShips.Count; i++)
             {
-                if (player.PXY.X - 1000 <= world.ListEnemies[i].EXY.X && player.PXY.X + 1000 >= world.ListEnemies[i].EXY.X &&
-                    player.PXY.Y - 1000 <= world.ListEnemies[i].EXY.Y && player.PXY.Y + 1000 >= world.ListEnemies[i].EXY.Y)
+                if (player.PXY.X - 1000 <= world.ListRandShips[i].EXY.X && player.PXY.X + 1000 >= world.ListRandShips[i].EXY.X &&
+                    player.PXY.Y - 1000 <= world.ListRandShips[i].EXY.Y && player.PXY.Y + 1000 >= world.ListRandShips[i].EXY.Y)
                 {
-                    NearbyPlaces.Text = NearbyPlaces.Text + world.ListEnemies[i].Ename + " " + world.ListEnemies[i].Allegiance + " at: " + world.ListEnemies[i].EXY.CurrentC() + "\n";
+                    NearbyPlaces.Text = NearbyPlaces.Text + world.ListRandShips[i].Ename +
+                        " " + world.ListRandShips[i].Allegiance + " at: " + world.ListRandShips[i].EXY.CurrentC() +
+                        world.ListRandShips[i].IsHostile() + "\n";
                 }
             }
             await Task.Delay(1);

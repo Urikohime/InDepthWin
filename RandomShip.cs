@@ -1,7 +1,7 @@
 ﻿using System;
 namespace InDepthWin
 {
-	class Enemies
+	class RandomShip
 	{
         public int lvl = 1;
         public String Ename;
@@ -16,9 +16,13 @@ namespace InDepthWin
         public Inventory INV = new Inventory();
         public Coordinates EXY = new Coordinates(0, 0);
         public int Eindex;
+        public bool Hostile;
+        public bool Active;
 
-        public Enemies(int IND, String NAME, Coordinates COORDS, int ALLI)
+        public RandomShip(int IND, String NAME, Coordinates COORDS, int ALLI, int hst)
         {
+            Active = true;
+            HOSTILEYN(hst);
             Eindex = IND;
             Ename = NAME;
             EXY = COORDS;
@@ -34,6 +38,26 @@ namespace InDepthWin
                     II.Amount = rand.Next(1, 10);
                 }
             }
+        }
+
+        public String IsHostile()
+        {
+            if (Hostile == true)
+            {
+                return "Hostile";
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void HOSTILEYN(int hst)
+        {
+            if(hst == 0)
+            { Hostile = false; }
+            else
+            { Hostile = true; }
         }
 
         public void Alliance(int alli)
