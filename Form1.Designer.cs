@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.StatsWindow = new System.Windows.Forms.Panel();
             this.Stats = new System.Windows.Forms.Label();
             this.MapWindow = new System.Windows.Forms.Panel();
@@ -57,10 +58,14 @@
             this.UEDFselect = new System.Windows.Forms.RadioButton();
             this.PlayerShipIN = new System.Windows.Forms.TextBox();
             this.PlayerNameIN = new System.Windows.Forms.TextBox();
+            this.progressBarStart = new System.Windows.Forms.ProgressBar();
             this.PlaceWindow = new System.Windows.Forms.Panel();
             this.PeopleOnPlace = new System.Windows.Forms.RichTextBox();
             this.PlaceTitle = new System.Windows.Forms.Label();
-            this.progressBarStart = new System.Windows.Forms.ProgressBar();
+            this.BattleWindow = new System.Windows.Forms.Panel();
+            this.BattleTitle = new System.Windows.Forms.Label();
+            this.BattleTimer = new System.Windows.Forms.Timer(this.components);
+            this.TESTOBJ = new System.Windows.Forms.Label();
             this.StatsWindow.SuspendLayout();
             this.MapWindow.SuspendLayout();
             this.LoggingWindow.SuspendLayout();
@@ -70,6 +75,7 @@
             this.TerminalWindow.SuspendLayout();
             this.StartWindow.SuspendLayout();
             this.PlaceWindow.SuspendLayout();
+            this.BattleWindow.SuspendLayout();
             this.SuspendLayout();
             // 
             // StatsWindow
@@ -390,6 +396,18 @@
             this.PlayerNameIN.Size = new System.Drawing.Size(100, 20);
             this.PlayerNameIN.TabIndex = 0;
             // 
+            // progressBarStart
+            // 
+            this.progressBarStart.ForeColor = System.Drawing.Color.Red;
+            this.progressBarStart.Location = new System.Drawing.Point(5, 122);
+            this.progressBarStart.MarqueeAnimationSpeed = 2;
+            this.progressBarStart.Maximum = 7;
+            this.progressBarStart.Name = "progressBarStart";
+            this.progressBarStart.Size = new System.Drawing.Size(386, 20);
+            this.progressBarStart.Step = 1;
+            this.progressBarStart.TabIndex = 4;
+            this.progressBarStart.Visible = false;
+            // 
             // PlaceWindow
             // 
             this.PlaceWindow.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -422,24 +440,46 @@
             this.PlaceTitle.TabIndex = 0;
             this.PlaceTitle.Text = "Placeholder";
             // 
-            // progressBarStart
+            // BattleWindow
             // 
-            this.progressBarStart.ForeColor = System.Drawing.Color.Red;
-            this.progressBarStart.Location = new System.Drawing.Point(5, 122);
-            this.progressBarStart.MarqueeAnimationSpeed = 2;
-            this.progressBarStart.Maximum = 7;
-            this.progressBarStart.Name = "progressBarStart";
-            this.progressBarStart.Size = new System.Drawing.Size(386, 20);
-            this.progressBarStart.Step = 1;
-            this.progressBarStart.TabIndex = 4;
-            this.progressBarStart.Visible = false;
+            this.BattleWindow.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.BattleWindow.Controls.Add(this.TESTOBJ);
+            this.BattleWindow.Controls.Add(this.BattleTitle);
+            this.BattleWindow.Location = new System.Drawing.Point(800, 0);
+            this.BattleWindow.Name = "BattleWindow";
+            this.BattleWindow.Size = new System.Drawing.Size(400, 300);
+            this.BattleWindow.TabIndex = 0;
+            // 
+            // BattleTitle
+            // 
+            this.BattleTitle.AutoSize = true;
+            this.BattleTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BattleTitle.Location = new System.Drawing.Point(0, 0);
+            this.BattleTitle.Name = "BattleTitle";
+            this.BattleTitle.Size = new System.Drawing.Size(67, 16);
+            this.BattleTitle.TabIndex = 0;
+            this.BattleTitle.Text = "Fighting:";
+            // 
+            // BattleTimer
+            // 
+            this.BattleTimer.Interval = 1000;
+            // 
+            // TESTOBJ
+            // 
+            this.TESTOBJ.AutoSize = true;
+            this.TESTOBJ.Location = new System.Drawing.Point(178, 247);
+            this.TESTOBJ.Name = "TESTOBJ";
+            this.TESTOBJ.Size = new System.Drawing.Size(29, 13);
+            this.TESTOBJ.TabIndex = 1;
+            this.TESTOBJ.Text = "[||||||||]";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 911);
+            this.ClientSize = new System.Drawing.Size(1210, 911);
             this.Controls.Add(this.PlaceWindow);
+            this.Controls.Add(this.BattleWindow);
             this.Controls.Add(this.MapWindow);
             this.Controls.Add(this.TerminalWindow);
             this.Controls.Add(this.StartWindow);
@@ -467,6 +507,8 @@
             this.StartWindow.PerformLayout();
             this.PlaceWindow.ResumeLayout(false);
             this.PlaceWindow.PerformLayout();
+            this.BattleWindow.ResumeLayout(false);
+            this.BattleWindow.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -506,6 +548,10 @@
         private System.Windows.Forms.TabPage Log2;
         private System.Windows.Forms.RichTextBox LogText2;
         private System.Windows.Forms.ProgressBar progressBarStart;
+        private System.Windows.Forms.Panel BattleWindow;
+        private System.Windows.Forms.Label BattleTitle;
+        private System.Windows.Forms.Timer BattleTimer;
+        private System.Windows.Forms.Label TESTOBJ;
     }
 }
 

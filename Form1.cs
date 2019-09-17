@@ -14,7 +14,7 @@ namespace InDepthWin
     {
         Random R = new Random();
         String[] Alliance = { "UEDF", "CONM", "AOBO", "TSIB", "NLFD", "RUOP", "CPMC" };
-        String[] Commands = { "MOVE", "LAND", "SHOP", "TALK", "INFO", "QUEST", "DONE", "HELP" };
+        String[] Commands = { "MOVE", "LAND", "SHOP", "TALK", "INFO", "QUEST", "DONE", "HELP", "DOCK" };
         Player player = new Player();
         Worldplaces world = new Worldplaces();
         String INNFO;
@@ -136,7 +136,7 @@ namespace InDepthWin
             StartWindow.Location = new Point(605, 805);
             StartWindow.Visible = false;
 
-            this.Size = new Size(815, 638);
+            this.Size = new Size(820, 638);
 
             StatsWindow.Visible = true;
             TerminalWindow.Visible = true;
@@ -199,7 +199,7 @@ namespace InDepthWin
                 String[] INP = TerminalIN.Text.ToUpper().Split(' ');
                 if (INP[0].Trim() == "MOVE" && talking == false && landed == false)
                 {
-                    if (INP[1].Trim().Length == 13)
+                    if (INP[1].Trim().Length == 9)
                     {
                         String[] inpx = INP[1].Split(':');
                         if (int.Parse(inpx[0]) <= (player.PXY.X + 1000) && int.Parse(inpx[0]) >= (player.PXY.X - 1000) && int.Parse(inpx[1]) <= (player.PXY.Y + 1000) && int.Parse(inpx[1]) >= (player.PXY.Y - 1000))
@@ -226,13 +226,12 @@ namespace InDepthWin
                 }
                 if (TerminalIN.Text.ToUpper() == "LAND" && landed == false)
                 {
-                    MapWindow.Visible = false;
-                    PlaceWindow.Location = new Point(400, 0);
-                    PeopleOnPlace.Text = "";
                     for (int i = 0; i < world.ListPlaces.Count; i++)
                     {
                         if (player.PXY.CurrentC() == world.ListPlaces[i].placeXY.CurrentC())
                         {
+                            PlaceWindow.Location = new Point(400, 0);
+                            PeopleOnPlace.Text = "";
                             CurrentPlaceID = world.ListPlaces[i].plindex;
                             MapWindow.Visible = false;
                             PlaceTitle.Text = world.ListPlaces[i].placename;
@@ -382,6 +381,19 @@ namespace InDepthWin
                     CommandLog.Text = "TAKEOFF!";
                     landed = false;
                 }
+
+                if (TerminalIN.Text.ToUpper() == "ATTACK")
+                {
+                    foreach (RandomShip RS in world.ListRandShips)
+                    {
+                        if (RS.EXY.CurrentC() == player.PXY.CurrentC())
+                        {
+                            MapWindow.Visible = false;
+                            BattleWindow.Location = MapWindow.Location;
+                            BattleTitle.Text = BattleTitle.Text + " " + RS.Ename;
+                        }
+                    }
+                }
                 Stats.Text = player.ShowClearStats();
                 SCAN();
                 ////////////////////////////////////////
@@ -474,8 +486,8 @@ namespace InDepthWin
             NearbyPlaces.Text = "Places Nearby:\n";
             for (int i = 0; i < world.ListPlaces.Count; i++)
             {
-                if (player.PXY.X - 1000 <= world.ListPlaces[i].placeXY.X && player.PXY.X + 1000 >= world.ListPlaces[i].placeXY.X &&
-                    player.PXY.Y - 1000 <= world.ListPlaces[i].placeXY.Y && player.PXY.Y + 1000 >= world.ListPlaces[i].placeXY.Y)
+                if (player.PXY.X - 100 <= world.ListPlaces[i].placeXY.X && player.PXY.X + 100 >= world.ListPlaces[i].placeXY.X &&
+                    player.PXY.Y - 100 <= world.ListPlaces[i].placeXY.Y && player.PXY.Y + 100 >= world.ListPlaces[i].placeXY.Y)
                 {
                     NearbyPlaces.Text = NearbyPlaces.Text + world.ListPlaces[i].placename + " at: " + world.ListPlaces[i].placeXY.CurrentC() + "\n";
                 }
@@ -483,12 +495,12 @@ namespace InDepthWin
             NearbyPlaces.Text = NearbyPlaces.Text + "\nNearby Ships:\n";
             for (int i = 0; i < world.ListRandShips.Count; i++)
             {
-                if (player.PXY.X - 1000 <= world.ListRandShips[i].EXY.X && player.PXY.X + 1000 >= world.ListRandShips[i].EXY.X &&
-                    player.PXY.Y - 1000 <= world.ListRandShips[i].EXY.Y && player.PXY.Y + 1000 >= world.ListRandShips[i].EXY.Y)
+                if (player.PXY.X - 100 <= world.ListRandShips[i].EXY.X && player.PXY.X + 100 >= world.ListRandShips[i].EXY.X &&
+                    player.PXY.Y - 100 <= world.ListRandShips[i].EXY.Y && player.PXY.Y + 100 >= world.ListRandShips[i].EXY.Y)
                 {
                     NearbyPlaces.Text = NearbyPlaces.Text + world.ListRandShips[i].Ename +
                         " " + world.ListRandShips[i].Allegiance + " at: " + world.ListRandShips[i].EXY.CurrentC() +
-                        world.ListRandShips[i].IsHostile() + "\n";
+                        " " + world.ListRandShips[i].IsHostile() + "\n";
                 }
             }
             await Task.Delay(1);

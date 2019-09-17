@@ -12,7 +12,7 @@ namespace InDepthWin
         
 		public Random r = new Random();
         private int maxcapa = 1;
-        private int randplaces = 10;
+        private int randplaces = 100;
         private int PInd;
         private int queind = 0;
         private String Qname = null;
@@ -43,8 +43,8 @@ namespace InDepthWin
             {
                 Coordinates coords = new Coordinates(0, 0);
                 ListPlaces.Add(new Place(i, MainPlaces[i], coords, r.Next(15, 20)));
-                ListPlaces[i].placeXY.X = r.Next(100000, 999999);
-                ListPlaces[i].placeXY.Y = r.Next(100000, 999999);
+                ListPlaces[i].placeXY.X = r.Next(1000, 9999);
+                ListPlaces[i].placeXY.Y = r.Next(1000, 9999);
                 maxcapa += ListPlaces[i].PCapacity;
             }
         }
@@ -55,14 +55,14 @@ namespace InDepthWin
             {
                 Coordinates coords = new Coordinates(0, 0);
                 ListPlaces.Add(new Place(v, RandPlaces1[r.Next(0, RandPlaces1.Length)] + RandPlaces2[r.Next(0, RandPlaces2.Length)], coords, r.Next(10, 15)));
-                ListPlaces[v].placeXY.X = r.Next(100000, 999999);
-                ListPlaces[v].placeXY.Y = r.Next(100000, 999999);
+                ListPlaces[v].placeXY.X = r.Next(1000, 9999);
+                ListPlaces[v].placeXY.Y = r.Next(1000, 9999);
                 for (int chk = 0; chk < ListPlaces.Count - 1; chk++)
                 {
                     if (ListPlaces[chk].placeXY.CurrentC() == ListPlaces[v].placeXY.CurrentC())
                     {
-                        ListPlaces[v].placeXY.X = r.Next(100000, 999999);
-                        ListPlaces[v].placeXY.Y = r.Next(100000, 999999);
+                        ListPlaces[v].placeXY.X = r.Next(1000, 9999);
+                        ListPlaces[v].placeXY.Y = r.Next(1000, 9999);
                     }
                 }
                 maxcapa += ListPlaces[v].PCapacity;
@@ -77,8 +77,8 @@ namespace InDepthWin
                 {
                     Coordinates coords = new Coordinates(0, 0);
                     ListPlaces.Add(new Place(h, ShopPlaces[ccc], coords, r.Next(10, 18)));
-                    ListPlaces[h].placeXY.X = r.Next(100000, 999999);
-                    ListPlaces[h].placeXY.Y = r.Next(100000, 999999);
+                    ListPlaces[h].placeXY.X = r.Next(1000, 9999);
+                    ListPlaces[h].placeXY.Y = r.Next(1000, 9999);
                     maxcapa += ListPlaces[h].PCapacity;
                 }
             }
@@ -254,8 +254,13 @@ namespace InDepthWin
         {
             for (int i = 0; i < r.Next(randplaces*10, randplaces*20); i++)
             {
+                Coordinates CO = new Coordinates(0, 0);
+                foreach(RandomShip RS in ListRandShips)
+                {
+
+                }
                 ListRandShips.Add(new RandomShip(i, NAMES[r.Next(0, NAMES.Length)] + " " + NUMBERS[r.Next(0, NUMBERS.Length)],
-                    new Coordinates(r.Next(100000, 999999), r.Next(100000, 999999)),
+                    new Coordinates(r.Next(1000, 9999), r.Next(1000, 9999)),
                     r.Next(0, 6)));
             }
             foreach (RandomShip RS in ListRandShips)

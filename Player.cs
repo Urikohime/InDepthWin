@@ -34,8 +34,8 @@ namespace InDepthWin
 
 		public Player()
 		{
-			PXY.X = rand.Next(100000, 999999);
-			PXY.Y = rand.Next(100000, 999999);
+			PXY.X = rand.Next(1000, 9999);
+			PXY.Y = rand.Next(1000, 9999);
 			Pname = "X. Odak";
 			Sname = "Firebird IV";
 			Allegiance = "UEDF";

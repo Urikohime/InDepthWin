@@ -16,7 +16,7 @@ namespace InDepthWin
 
 		public String CurrentC()
 		{
-			return X.ToString("000000") + ":" + Y.ToString("000000");
+			return X.ToString("0000") + ":" + Y.ToString("0000");
 		}
 
 	}
