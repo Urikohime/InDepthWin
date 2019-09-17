@@ -83,13 +83,6 @@ namespace InDepthWin
 
         protected async void OnPressedStart(object sender, EventArgs e)
         {
-            INVISIBLE();
-            await Task.Delay(10);
-            LoadWorld();
-            await Task.Delay(10);
-            VISIBLE();
-            await Task.Delay(10);
-            SCAN();
             if (PlayerNameIN.Text != "")
             {
                 player.Pname = PlayerNameIN.Text;
@@ -108,6 +101,13 @@ namespace InDepthWin
                 player.Sname = "Firebird VI";
             }
             player.Alliance(SelectedAll());
+            INVISIBLE();
+            await Task.Delay(10);
+            LoadWorld();
+            await Task.Delay(10);
+            VISIBLE();
+            await Task.Delay(10);
+            SCAN();
             Stats.Text = player.ShowClearStats();
             INSTR();
         }

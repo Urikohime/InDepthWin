@@ -19,14 +19,13 @@ namespace InDepthWin
         public bool Hostile;
         public bool Active;
 
-        public RandomShip(int IND, String NAME, Coordinates COORDS, int ALLI, String alii)
+        public RandomShip(int IND, String NAME, Coordinates COORDS, int ALLI)
         {
             Active = true;
             Eindex = IND;
             Ename = NAME;
             EXY = COORDS;
             Alliance(ALLI);
-            Hostile = relation(alii);
             foreach (Item II in INV.InInv)
             {
                 if (II.Type == "AMMO")
@@ -40,56 +39,54 @@ namespace InDepthWin
             }
         }
 
-        private bool relation(String Alli)
+        public bool relation(String Alli)
         {
-            bool Returner = false;
             if (Alli == "UEDF")
             {
                 if (Allegiance == "RUOP" ||
                     Allegiance == "NLFD" ||
-                    Allegiance == "CPMC") { Returner = true; }
-                else { Returner = false; }
+                    Allegiance == "CPMC") { return true; }
+                else { return false; }
             }
             else if (Alli == "RUOP")
             {
-                if (Allegiance == "RUOP") { Returner = false; }
-                else { Returner = true; }
+                if (Allegiance == "RUOP") { return false; }
+                else { return true; }
             }
             else if (Alli == "NLFD")
             {
                 if (Allegiance == "UEDF" ||
                     Allegiance == "RUOP" ||
-                    Allegiance == "CONM") { Returner = true; }
-                else { Returner = false; }
+                    Allegiance == "CONM") { return true; }
+                else { return false; }
             }
             else if (Alli == "TSIB")
             {
-                if (Allegiance == "RUOP") { Returner = true; }
-                else { Returner = false; }
+                if (Allegiance == "RUOP") { return true; }
+                else { return false; }
             }
             else if (Alli == "AOBO")
             {
                 if (Allegiance == "RUOP" ||
-                    Allegiance == "CONM") { Returner = true; }
-                else { Returner = false; }
+                    Allegiance == "CONM") { return true; }
+                else { return false; }
             }
             else if (Alli == "CPMC")
             {
                 if (Allegiance == "UEDF" ||
                     Allegiance == "RUOP" ||
-                    Allegiance == "CONM") { Returner = true; }
-                else { Returner = false; }
+                    Allegiance == "CONM") { return true; }
+                else { return false; }
             }
             else if (Alli == "CONM")
             {
                 if (Allegiance == "RUOP" ||
                     Allegiance == "NLFD" ||
                     Allegiance == "AOBO" ||
-                    Allegiance == "CPMC" ||
-                    Allegiance == "CONM") { Returner = true; }
-                else { Returner = false; }
+                    Allegiance == "CPMC") { return true; }
+                else { return false; }
             }
-            return Returner;
+            else { return true; }
         }
 
         public String IsHostile()

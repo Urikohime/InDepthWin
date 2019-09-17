@@ -256,8 +256,11 @@ namespace InDepthWin
             {
                 ListRandShips.Add(new RandomShip(i, NAMES[r.Next(0, NAMES.Length)] + " " + NUMBERS[r.Next(0, NUMBERS.Length)],
                     new Coordinates(r.Next(100000, 999999), r.Next(100000, 999999)),
-                    r.Next(0, 6),
-                    Alli));
+                    r.Next(0, 6)));
+            }
+            foreach (RandomShip RS in ListRandShips)
+            {
+                RS.Hostile = RS.relation(Alli);
             }
         }
 
