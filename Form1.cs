@@ -13,7 +13,6 @@ namespace InDepthWin
     public partial class Form1 : Form
     {
         Random R = new Random();
-        String[] Alliance = { "UEDF", "CONM", "AOBO", "TSIB", "NLFD", "RUOP", "CPMC" };
         String[] Commands = { "MOVE", "LAND", "SHOP", "TALK", "INFO", "QUEST", "DONE", "HELP", "DOCK" };
         Player player = new Player();
         Worldplaces world = new Worldplaces();
@@ -451,7 +450,7 @@ namespace InDepthWin
 
                 foreach(RandomShip EN in world.ListRandShips)
                 {
-                    if(R.Next(0, 2) == R.Next(0, 2))
+                    if(R.Next(0, 2) == R.Next(0, 2) && EN.EXY.CurrentC() != player.PXY.CurrentC())
                     {
                         EN.EXY = new Coordinates(R.Next(EN.EXY.X - 500, EN.EXY.X + 500), R.Next(EN.EXY.Y - 500, EN.EXY.Y + 500));
                     }

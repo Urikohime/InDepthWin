@@ -63,9 +63,11 @@
             this.PeopleOnPlace = new System.Windows.Forms.RichTextBox();
             this.PlaceTitle = new System.Windows.Forms.Label();
             this.BattleWindow = new System.Windows.Forms.Panel();
+            this.TESTOBJ = new System.Windows.Forms.Label();
             this.BattleTitle = new System.Windows.Forms.Label();
             this.BattleTimer = new System.Windows.Forms.Timer(this.components);
-            this.TESTOBJ = new System.Windows.Forms.Label();
+            this.HostileLabel = new System.Windows.Forms.Label();
+            this.ExplenationLabel = new System.Windows.Forms.Label();
             this.StatsWindow.SuspendLayout();
             this.MapWindow.SuspendLayout();
             this.LoggingWindow.SuspendLayout();
@@ -226,10 +228,10 @@
             this.CommandLog.BackColor = System.Drawing.Color.White;
             this.CommandLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CommandLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CommandLog.Location = new System.Drawing.Point(5, 20);
+            this.CommandLog.Location = new System.Drawing.Point(3, 20);
             this.CommandLog.Name = "CommandLog";
             this.CommandLog.ReadOnly = true;
-            this.CommandLog.Size = new System.Drawing.Size(388, 247);
+            this.CommandLog.Size = new System.Drawing.Size(390, 247);
             this.CommandLog.TabIndex = 1;
             this.CommandLog.Text = "";
             // 
@@ -246,6 +248,8 @@
             // StartWindow
             // 
             this.StartWindow.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.StartWindow.Controls.Add(this.ExplenationLabel);
+            this.StartWindow.Controls.Add(this.HostileLabel);
             this.StartWindow.Controls.Add(this.StartBtn);
             this.StartWindow.Controls.Add(this.SnameLabel);
             this.StartWindow.Controls.Add(this.PnameLabel);
@@ -450,6 +454,15 @@
             this.BattleWindow.Size = new System.Drawing.Size(400, 300);
             this.BattleWindow.TabIndex = 0;
             // 
+            // TESTOBJ
+            // 
+            this.TESTOBJ.AutoSize = true;
+            this.TESTOBJ.Location = new System.Drawing.Point(178, 247);
+            this.TESTOBJ.Name = "TESTOBJ";
+            this.TESTOBJ.Size = new System.Drawing.Size(29, 13);
+            this.TESTOBJ.TabIndex = 1;
+            this.TESTOBJ.Text = "[||||||||]";
+            // 
             // BattleTitle
             // 
             this.BattleTitle.AutoSize = true;
@@ -464,14 +477,26 @@
             // 
             this.BattleTimer.Interval = 1000;
             // 
-            // TESTOBJ
+            // HostileLabel
             // 
-            this.TESTOBJ.AutoSize = true;
-            this.TESTOBJ.Location = new System.Drawing.Point(178, 247);
-            this.TESTOBJ.Name = "TESTOBJ";
-            this.TESTOBJ.Size = new System.Drawing.Size(29, 13);
-            this.TESTOBJ.TabIndex = 1;
-            this.TESTOBJ.Text = "[||||||||]";
+            this.HostileLabel.AutoSize = true;
+            this.HostileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HostileLabel.ForeColor = System.Drawing.Color.Red;
+            this.HostileLabel.Location = new System.Drawing.Point(210, 123);
+            this.HostileLabel.Name = "HostileLabel";
+            this.HostileLabel.Size = new System.Drawing.Size(52, 15);
+            this.HostileLabel.TabIndex = 5;
+            this.HostileLabel.Text = "Hostile";
+            // 
+            // ExplenationLabel
+            // 
+            this.ExplenationLabel.AutoSize = true;
+            this.ExplenationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExplenationLabel.Location = new System.Drawing.Point(5, 149);
+            this.ExplenationLabel.Name = "ExplenationLabel";
+            this.ExplenationLabel.Size = new System.Drawing.Size(50, 16);
+            this.ExplenationLabel.TabIndex = 6;
+            this.ExplenationLabel.Text = "Swoot";
             // 
             // Form1
             // 
@@ -552,6 +577,8 @@
         private System.Windows.Forms.Label BattleTitle;
         private System.Windows.Forms.Timer BattleTimer;
         private System.Windows.Forms.Label TESTOBJ;
+        private System.Windows.Forms.Label ExplenationLabel;
+        private System.Windows.Forms.Label HostileLabel;
     }
 }
 
