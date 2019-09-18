@@ -48,11 +48,6 @@ namespace InDepthWin
                     Allegiance == "CPMC") { return true; }
                 else { return false; }
             }
-            else if (Alli == "RUOP")
-            {
-                if (Allegiance == "RUOP") { return false; }
-                else { return true; }
-            }
             else if (Alli == "NLFD")
             {
                 if (Allegiance == "UEDF" ||

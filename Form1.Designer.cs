@@ -46,11 +46,12 @@
             this.CommandLog = new System.Windows.Forms.RichTextBox();
             this.TerminalIN = new System.Windows.Forms.TextBox();
             this.StartWindow = new System.Windows.Forms.Panel();
+            this.ExplenationLabel = new System.Windows.Forms.Label();
+            this.HostileLabel = new System.Windows.Forms.Label();
             this.StartBtn = new System.Windows.Forms.Button();
             this.SnameLabel = new System.Windows.Forms.Label();
             this.PnameLabel = new System.Windows.Forms.Label();
             this.CPMCselect = new System.Windows.Forms.RadioButton();
-            this.RUOPselect = new System.Windows.Forms.RadioButton();
             this.TSIBselect = new System.Windows.Forms.RadioButton();
             this.NLFDselect = new System.Windows.Forms.RadioButton();
             this.CONMselect = new System.Windows.Forms.RadioButton();
@@ -66,8 +67,6 @@
             this.TESTOBJ = new System.Windows.Forms.Label();
             this.BattleTitle = new System.Windows.Forms.Label();
             this.BattleTimer = new System.Windows.Forms.Timer(this.components);
-            this.HostileLabel = new System.Windows.Forms.Label();
-            this.ExplenationLabel = new System.Windows.Forms.Label();
             this.StatsWindow.SuspendLayout();
             this.MapWindow.SuspendLayout();
             this.LoggingWindow.SuspendLayout();
@@ -254,7 +253,6 @@
             this.StartWindow.Controls.Add(this.SnameLabel);
             this.StartWindow.Controls.Add(this.PnameLabel);
             this.StartWindow.Controls.Add(this.CPMCselect);
-            this.StartWindow.Controls.Add(this.RUOPselect);
             this.StartWindow.Controls.Add(this.TSIBselect);
             this.StartWindow.Controls.Add(this.NLFDselect);
             this.StartWindow.Controls.Add(this.CONMselect);
@@ -267,6 +265,27 @@
             this.StartWindow.Name = "StartWindow";
             this.StartWindow.Size = new System.Drawing.Size(400, 300);
             this.StartWindow.TabIndex = 0;
+            // 
+            // ExplenationLabel
+            // 
+            this.ExplenationLabel.AutoSize = true;
+            this.ExplenationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExplenationLabel.Location = new System.Drawing.Point(5, 149);
+            this.ExplenationLabel.Name = "ExplenationLabel";
+            this.ExplenationLabel.Size = new System.Drawing.Size(50, 16);
+            this.ExplenationLabel.TabIndex = 6;
+            this.ExplenationLabel.Text = "Swoot";
+            // 
+            // HostileLabel
+            // 
+            this.HostileLabel.AutoSize = true;
+            this.HostileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HostileLabel.ForeColor = System.Drawing.Color.Red;
+            this.HostileLabel.Location = new System.Drawing.Point(210, 123);
+            this.HostileLabel.Name = "HostileLabel";
+            this.HostileLabel.Size = new System.Drawing.Size(52, 15);
+            this.HostileLabel.TabIndex = 5;
+            this.HostileLabel.Text = "Hostile";
             // 
             // StartBtn
             // 
@@ -310,18 +329,7 @@
             this.CPMCselect.TabStop = true;
             this.CPMCselect.Text = "CPMC";
             this.CPMCselect.UseVisualStyleBackColor = true;
-            // 
-            // RUOPselect
-            // 
-            this.RUOPselect.AutoSize = true;
-            this.RUOPselect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RUOPselect.Location = new System.Drawing.Point(202, 77);
-            this.RUOPselect.Name = "RUOPselect";
-            this.RUOPselect.Size = new System.Drawing.Size(60, 17);
-            this.RUOPselect.TabIndex = 1;
-            this.RUOPselect.TabStop = true;
-            this.RUOPselect.Text = "RUOP";
-            this.RUOPselect.UseVisualStyleBackColor = true;
+            this.CPMCselect.CheckedChanged += new System.EventHandler(this.select_changed);
             // 
             // TSIBselect
             // 
@@ -334,18 +342,20 @@
             this.TSIBselect.TabStop = true;
             this.TSIBselect.Text = "TSIB";
             this.TSIBselect.UseVisualStyleBackColor = true;
+            this.TSIBselect.CheckedChanged += new System.EventHandler(this.select_changed);
             // 
             // NLFDselect
             // 
             this.NLFDselect.AutoSize = true;
             this.NLFDselect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NLFDselect.Location = new System.Drawing.Point(111, 123);
+            this.NLFDselect.Location = new System.Drawing.Point(202, 77);
             this.NLFDselect.Name = "NLFDselect";
             this.NLFDselect.Size = new System.Drawing.Size(57, 17);
             this.NLFDselect.TabIndex = 1;
             this.NLFDselect.TabStop = true;
             this.NLFDselect.Text = "NLFD";
             this.NLFDselect.UseVisualStyleBackColor = true;
+            this.NLFDselect.CheckedChanged += new System.EventHandler(this.select_changed);
             // 
             // CONMselect
             // 
@@ -358,6 +368,7 @@
             this.CONMselect.TabStop = true;
             this.CONMselect.Text = "CONM";
             this.CONMselect.UseVisualStyleBackColor = true;
+            this.CONMselect.CheckedChanged += new System.EventHandler(this.select_changed);
             // 
             // AOBOselect
             // 
@@ -370,6 +381,7 @@
             this.AOBOselect.TabStop = true;
             this.AOBOselect.Text = "AOBO";
             this.AOBOselect.UseVisualStyleBackColor = true;
+            this.AOBOselect.CheckedChanged += new System.EventHandler(this.select_changed);
             // 
             // UEDFselect
             // 
@@ -383,6 +395,7 @@
             this.UEDFselect.TabStop = true;
             this.UEDFselect.Text = "UEDF";
             this.UEDFselect.UseVisualStyleBackColor = true;
+            this.UEDFselect.CheckedChanged += new System.EventHandler(this.select_changed);
             // 
             // PlayerShipIN
             // 
@@ -477,27 +490,6 @@
             // 
             this.BattleTimer.Interval = 1000;
             // 
-            // HostileLabel
-            // 
-            this.HostileLabel.AutoSize = true;
-            this.HostileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HostileLabel.ForeColor = System.Drawing.Color.Red;
-            this.HostileLabel.Location = new System.Drawing.Point(210, 123);
-            this.HostileLabel.Name = "HostileLabel";
-            this.HostileLabel.Size = new System.Drawing.Size(52, 15);
-            this.HostileLabel.TabIndex = 5;
-            this.HostileLabel.Text = "Hostile";
-            // 
-            // ExplenationLabel
-            // 
-            this.ExplenationLabel.AutoSize = true;
-            this.ExplenationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExplenationLabel.Location = new System.Drawing.Point(5, 149);
-            this.ExplenationLabel.Name = "ExplenationLabel";
-            this.ExplenationLabel.Size = new System.Drawing.Size(50, 16);
-            this.ExplenationLabel.TabIndex = 6;
-            this.ExplenationLabel.Text = "Swoot";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,7 +540,6 @@
         private System.Windows.Forms.TextBox PlayerNameIN;
         private System.Windows.Forms.TextBox PlayerShipIN;
         private System.Windows.Forms.RadioButton CPMCselect;
-        private System.Windows.Forms.RadioButton RUOPselect;
         private System.Windows.Forms.RadioButton TSIBselect;
         private System.Windows.Forms.RadioButton NLFDselect;
         private System.Windows.Forms.RadioButton CONMselect;

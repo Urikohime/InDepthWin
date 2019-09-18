@@ -72,6 +72,8 @@ namespace InDepthWin
             this.Size = new Size(415, 338);
             StartWindow.Visible = true;
             StartWindow.Location = new Point(0,0);
+            TSIBselect.Checked = true;
+            UEDFselect.Checked = true;
         }
 
         private async void LoadWorld()
@@ -122,11 +124,12 @@ namespace InDepthWin
             UEDFselect.Visible = false;
             TSIBselect.Visible = false;
             AOBOselect.Visible = false;
-            RUOPselect.Visible = false;
             CONMselect.Visible = false;
             CPMCselect.Visible = false;
             NLFDselect.Visible = false;
             StartBtn.Visible = false;
+            ExplenationLabel.Visible = false;
+            HostileLabel.Visible = false;
             await Task.Delay(1);
         }
 
@@ -157,8 +160,6 @@ namespace InDepthWin
                 selection = "NLFD";
             if (TSIBselect.Checked)
                 selection = "TSIB";
-            if (RUOPselect.Checked)
-                selection = "RUOP";
             if (CPMCselect.Checked)
                 selection = "CPMC";
 
@@ -550,6 +551,65 @@ namespace InDepthWin
             }
             PeopleOnPlace.ReadOnly = true;
             await Task.Delay(1);
+        }
+
+        private void select_changed(object sender, EventArgs e)
+        {
+            RadioButton RB = (RadioButton)sender;
+            if (RB.Text == "UEDF")
+            {
+                ExplenationLabel.Text = world.GT.UEDF;
+                NLFDselect.ForeColor = Color.Red;
+                CPMCselect.ForeColor = Color.Red;
+                UEDFselect.ForeColor = Color.Black;
+                AOBOselect.ForeColor = Color.Black;
+                CONMselect.ForeColor = Color.Black;
+            }
+            if (RB.Text == "TSIB")
+            {
+                ExplenationLabel.Text = world.GT.TSIB;
+                UEDFselect.ForeColor = Color.Black;
+                AOBOselect.ForeColor = Color.Black;
+                NLFDselect.ForeColor = Color.Black;
+                CONMselect.ForeColor = Color.Black;
+                CPMCselect.ForeColor = Color.Black;
+            }
+            if (RB.Text == "AOBO")
+            {
+                ExplenationLabel.Text = world.GT.AOBO;
+                CONMselect.ForeColor = Color.Red;
+                UEDFselect.ForeColor = Color.Black;
+                AOBOselect.ForeColor = Color.Black;
+                NLFDselect.ForeColor = Color.Black;
+                CPMCselect.ForeColor = Color.Black;
+            }
+            if (RB.Text == "NLFD")
+            {
+                ExplenationLabel.Text = world.GT.NLFD;
+                UEDFselect.ForeColor = Color.Red;
+                CONMselect.ForeColor = Color.Red;
+                AOBOselect.ForeColor = Color.Black;
+                NLFDselect.ForeColor = Color.Black;
+                CPMCselect.ForeColor = Color.Black;
+            }
+            if (RB.Text == "CONM")
+            {
+                ExplenationLabel.Text = world.GT.CONM;
+                NLFDselect.ForeColor = Color.Red;
+                CPMCselect.ForeColor = Color.Red;
+                AOBOselect.ForeColor = Color.Red;
+                UEDFselect.ForeColor = Color.Black;
+                CONMselect.ForeColor = Color.Black;
+            }
+            if (RB.Text == "CPMC")
+            {
+                ExplenationLabel.Text = world.GT.CPMC;
+                CONMselect.ForeColor = Color.Red;
+                UEDFselect.ForeColor = Color.Red;
+                AOBOselect.ForeColor = Color.Black;
+                NLFDselect.ForeColor = Color.Black;
+                CPMCselect.ForeColor = Color.Black;
+            }
         }
     }
 }

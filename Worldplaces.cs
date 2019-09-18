@@ -11,8 +11,9 @@ namespace InDepthWin
 	{
         
 		public Random r = new Random();
+        public GeneralTexts GT = new GeneralTexts();
         private int maxcapa = 1;
-        private int randplaces = 100;
+        private int randplaces = 10;
         private int PInd;
         private int queind = 0;
         private String Qname = null;

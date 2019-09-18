@@ -79,11 +79,6 @@ namespace InDepthWin
 				    pfirerate = 4; pability = "Scavenge"; Allegiance = "NLFD";
 				    break;
 
-				case "RUOP":
-				    phealth = 100000; pattack = 150; pdefence = 50; pstorage = 5000;
-				    pfirerate = 3; pability = "Commerce"; Allegiance = "RUOP";
-				    break;
-
 				case "CPMC":
 				    phealth = 175000; pattack = 190; pdefence = 40; pstorage = 3000;
 				    pfirerate = 4; pability = "ShieldFlow"; Allegiance = "CPMC";
