@@ -46,7 +46,7 @@
             this.CommandLog = new System.Windows.Forms.RichTextBox();
             this.TerminalIN = new System.Windows.Forms.TextBox();
             this.StartWindow = new System.Windows.Forms.Panel();
-            this.ExplenationLabel = new System.Windows.Forms.Label();
+            this.ExplenationLabel = new System.Windows.Forms.RichTextBox();
             this.HostileLabel = new System.Windows.Forms.Label();
             this.StartBtn = new System.Windows.Forms.Button();
             this.SnameLabel = new System.Windows.Forms.Label();
@@ -64,9 +64,16 @@
             this.PeopleOnPlace = new System.Windows.Forms.RichTextBox();
             this.PlaceTitle = new System.Windows.Forms.Label();
             this.BattleWindow = new System.Windows.Forms.Panel();
-            this.TESTOBJ = new System.Windows.Forms.Label();
+            this.BattleMap = new System.Windows.Forms.Panel();
+            this.TurnControl = new System.Windows.Forms.HScrollBar();
+            this.SpeedControl = new System.Windows.Forms.VScrollBar();
+            this.AbilityButton = new System.Windows.Forms.Button();
             this.BattleTitle = new System.Windows.Forms.Label();
+            this.FireButton = new System.Windows.Forms.Button();
             this.BattleTimer = new System.Windows.Forms.Timer(this.components);
+            this.SpeedMeter = new System.Windows.Forms.Label();
+            this.SpeedTimer = new System.Windows.Forms.Timer(this.components);
+            this.TESTOBJ = new System.Windows.Forms.PictureBox();
             this.StatsWindow.SuspendLayout();
             this.MapWindow.SuspendLayout();
             this.LoggingWindow.SuspendLayout();
@@ -77,6 +84,8 @@
             this.StartWindow.SuspendLayout();
             this.PlaceWindow.SuspendLayout();
             this.BattleWindow.SuspendLayout();
+            this.BattleMap.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TESTOBJ)).BeginInit();
             this.SuspendLayout();
             // 
             // StatsWindow
@@ -268,13 +277,15 @@
             // 
             // ExplenationLabel
             // 
-            this.ExplenationLabel.AutoSize = true;
-            this.ExplenationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExplenationLabel.Location = new System.Drawing.Point(5, 149);
+            this.ExplenationLabel.BackColor = System.Drawing.SystemColors.Menu;
+            this.ExplenationLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ExplenationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExplenationLabel.Location = new System.Drawing.Point(3, 149);
             this.ExplenationLabel.Name = "ExplenationLabel";
-            this.ExplenationLabel.Size = new System.Drawing.Size(50, 16);
-            this.ExplenationLabel.TabIndex = 6;
-            this.ExplenationLabel.Text = "Swoot";
+            this.ExplenationLabel.ReadOnly = true;
+            this.ExplenationLabel.Size = new System.Drawing.Size(388, 113);
+            this.ExplenationLabel.TabIndex = 1;
+            this.ExplenationLabel.Text = "";
             // 
             // HostileLabel
             // 
@@ -460,21 +471,51 @@
             // BattleWindow
             // 
             this.BattleWindow.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.BattleWindow.Controls.Add(this.TESTOBJ);
+            this.BattleWindow.Controls.Add(this.BattleMap);
+            this.BattleWindow.Controls.Add(this.TurnControl);
+            this.BattleWindow.Controls.Add(this.SpeedControl);
+            this.BattleWindow.Controls.Add(this.AbilityButton);
             this.BattleWindow.Controls.Add(this.BattleTitle);
+            this.BattleWindow.Controls.Add(this.FireButton);
             this.BattleWindow.Location = new System.Drawing.Point(800, 0);
             this.BattleWindow.Name = "BattleWindow";
             this.BattleWindow.Size = new System.Drawing.Size(400, 300);
             this.BattleWindow.TabIndex = 0;
             // 
-            // TESTOBJ
+            // BattleMap
             // 
-            this.TESTOBJ.AutoSize = true;
-            this.TESTOBJ.Location = new System.Drawing.Point(178, 247);
-            this.TESTOBJ.Name = "TESTOBJ";
-            this.TESTOBJ.Size = new System.Drawing.Size(29, 13);
-            this.TESTOBJ.TabIndex = 1;
-            this.TESTOBJ.Text = "[||||||||]";
+            this.BattleMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BattleMap.Controls.Add(this.TESTOBJ);
+            this.BattleMap.Controls.Add(this.SpeedMeter);
+            this.BattleMap.Location = new System.Drawing.Point(58, 20);
+            this.BattleMap.Name = "BattleMap";
+            this.BattleMap.Size = new System.Drawing.Size(335, 220);
+            this.BattleMap.TabIndex = 7;
+            // 
+            // TurnControl
+            // 
+            this.TurnControl.Location = new System.Drawing.Point(57, 242);
+            this.TurnControl.Name = "TurnControl";
+            this.TurnControl.Size = new System.Drawing.Size(280, 50);
+            this.TurnControl.TabIndex = 6;
+            this.TurnControl.Value = 50;
+            // 
+            // SpeedControl
+            // 
+            this.SpeedControl.Location = new System.Drawing.Point(4, 20);
+            this.SpeedControl.Name = "SpeedControl";
+            this.SpeedControl.Size = new System.Drawing.Size(50, 220);
+            this.SpeedControl.TabIndex = 5;
+            this.SpeedControl.Value = 100;
+            // 
+            // AbilityButton
+            // 
+            this.AbilityButton.Location = new System.Drawing.Point(343, 242);
+            this.AbilityButton.Name = "AbilityButton";
+            this.AbilityButton.Size = new System.Drawing.Size(50, 50);
+            this.AbilityButton.TabIndex = 2;
+            this.AbilityButton.Text = "Ability";
+            this.AbilityButton.UseVisualStyleBackColor = true;
             // 
             // BattleTitle
             // 
@@ -486,9 +527,42 @@
             this.BattleTitle.TabIndex = 0;
             this.BattleTitle.Text = "Fighting:";
             // 
+            // FireButton
+            // 
+            this.FireButton.Location = new System.Drawing.Point(4, 242);
+            this.FireButton.Name = "FireButton";
+            this.FireButton.Size = new System.Drawing.Size(50, 50);
+            this.FireButton.TabIndex = 1;
+            this.FireButton.Text = "FIRE";
+            this.FireButton.UseVisualStyleBackColor = true;
+            // 
             // BattleTimer
             // 
             this.BattleTimer.Interval = 1000;
+            this.BattleTimer.Tick += new System.EventHandler(this.BattleTick);
+            // 
+            // SpeedMeter
+            // 
+            this.SpeedMeter.AutoSize = true;
+            this.SpeedMeter.Location = new System.Drawing.Point(2, 205);
+            this.SpeedMeter.Name = "SpeedMeter";
+            this.SpeedMeter.Size = new System.Drawing.Size(50, 13);
+            this.SpeedMeter.TabIndex = 2;
+            this.SpeedMeter.Text = "Speed: 0";
+            // 
+            // SpeedTimer
+            // 
+            this.SpeedTimer.Interval = 2000;
+            this.SpeedTimer.Tick += new System.EventHandler(this.SpeedTick);
+            // 
+            // TESTOBJ
+            // 
+            this.TESTOBJ.BackColor = System.Drawing.Color.Cyan;
+            this.TESTOBJ.Location = new System.Drawing.Point(10, 10);
+            this.TESTOBJ.Name = "TESTOBJ";
+            this.TESTOBJ.Size = new System.Drawing.Size(5, 5);
+            this.TESTOBJ.TabIndex = 3;
+            this.TESTOBJ.TabStop = false;
             // 
             // Form1
             // 
@@ -526,6 +600,9 @@
             this.PlaceWindow.PerformLayout();
             this.BattleWindow.ResumeLayout(false);
             this.BattleWindow.PerformLayout();
+            this.BattleMap.ResumeLayout(false);
+            this.BattleMap.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TESTOBJ)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -567,9 +644,16 @@
         private System.Windows.Forms.Panel BattleWindow;
         private System.Windows.Forms.Label BattleTitle;
         private System.Windows.Forms.Timer BattleTimer;
-        private System.Windows.Forms.Label TESTOBJ;
-        private System.Windows.Forms.Label ExplenationLabel;
         private System.Windows.Forms.Label HostileLabel;
+        private System.Windows.Forms.RichTextBox ExplenationLabel;
+        private System.Windows.Forms.Button FireButton;
+        private System.Windows.Forms.VScrollBar SpeedControl;
+        private System.Windows.Forms.Button AbilityButton;
+        private System.Windows.Forms.HScrollBar TurnControl;
+        private System.Windows.Forms.Panel BattleMap;
+        private System.Windows.Forms.Label SpeedMeter;
+        private System.Windows.Forms.Timer SpeedTimer;
+        private System.Windows.Forms.PictureBox TESTOBJ;
     }
 }
 

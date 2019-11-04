@@ -12,6 +12,8 @@ namespace InDepthWin
 {
     public partial class Form1 : Form
     {
+        int turn = 0;
+        int accel = 0;
         Random R = new Random();
         String[] Commands = { "MOVE", "LAND", "SHOP", "TALK", "INFO", "QUEST", "DONE", "HELP", "DOCK" };
         Player player = new Player();
@@ -22,6 +24,7 @@ namespace InDepthWin
         bool inshop = false;
         bool landed = false;
         bool talking = false;
+        bool fighting = false;
 
         public void AddToBar()
         {
@@ -207,14 +210,23 @@ namespace InDepthWin
                             player.PXY.X = int.Parse(inpx[0]);
                             player.PXY.Y = int.Parse(inpx[1]);
                         }
-                        for (int i = 0; i < world.ListPlaces.Count; i++)
+                        foreach (Place PL in world.ListPlaces)
                         {
-                            if (INP[1] == world.ListPlaces[i].placeXY.CurrentC())
+                            if (INP[1] == PL.placeXY.CurrentC())
                             {
                                 player.PXY.X = int.Parse(inpx[0]);
                                 player.PXY.Y = int.Parse(inpx[1]);
                                 CommandLog.Text = CommandLog.Text + "";
-                                CurrentPlaceID = world.ListPlaces[i].plindex;
+                                CurrentPlaceID = PL.plindex;
+                            }
+                        }
+                        foreach (RandomShip RS in world.ListRandShips)
+                        {
+                            if (INP[1] == RS.EXY.CurrentC())
+                            {
+                                player.PXY.X = int.Parse(inpx[0]);
+                                player.PXY.Y = int.Parse(inpx[1]);
+                                CommandLog.Text = CommandLog.Text + "";
                             }
                         }
                         CommandLog.Text = INP[0] + ": " + INP[1];
@@ -388,9 +400,12 @@ namespace InDepthWin
                     {
                         if (RS.EXY.CurrentC() == player.PXY.CurrentC())
                         {
+                            fighting = true;
                             MapWindow.Visible = false;
                             BattleWindow.Location = MapWindow.Location;
                             BattleTitle.Text = BattleTitle.Text + " " + RS.Ename;
+                            BattleTimer.Enabled = true;
+                            SpeedTimer.Enabled = true;
                         }
                     }
                 }
@@ -449,13 +464,13 @@ namespace InDepthWin
                     }
                 }
 
-                foreach(RandomShip EN in world.ListRandShips)
-                {
-                    if(R.Next(0, 2) == R.Next(0, 2) && EN.EXY.CurrentC() != player.PXY.CurrentC())
-                    {
-                        EN.EXY = new Coordinates(R.Next(EN.EXY.X - 500, EN.EXY.X + 500), R.Next(EN.EXY.Y - 500, EN.EXY.Y + 500));
-                    }
-                }
+                //foreach(RandomShip EN in world.ListRandShips)
+                //{
+                //    if(R.Next(0, 2) == R.Next(0, 2) && EN.EXY.CurrentC() != player.PXY.CurrentC())
+                //    {
+                //        EN.EXY = new Coordinates(R.Next(EN.EXY.X - 500, EN.EXY.X + 500), R.Next(EN.EXY.Y - 500, EN.EXY.Y + 500));
+                //    }
+                //}
 
             }
             catch (Exception) { CommandLog.Text = CommandLog.Text + "\nCOMMAND INCORRECT!"; }
@@ -609,6 +624,38 @@ namespace InDepthWin
                 AOBOselect.ForeColor = Color.Black;
                 NLFDselect.ForeColor = Color.Black;
                 CPMCselect.ForeColor = Color.Black;
+            }
+        }
+
+        private void BattleTick(object sender, EventArgs e)
+        {
+            SpeedMeter.Text = "Speed: " + accel.ToString();
+            TESTOBJ.Location = new Point(TESTOBJ.Location.X + accel, TESTOBJ.Location.Y + turn);
+            if (TESTOBJ.Location.X > BattleMap.Width + 1)
+            {
+                TESTOBJ.Location = new Point(0, TESTOBJ.Location.Y);
+            }
+            else if (TESTOBJ.Location.X < 0)
+            {
+                TESTOBJ.Location = new Point(BattleMap.Width , TESTOBJ.Location.Y);
+            }
+            if (TESTOBJ.Location.Y > BattleMap.Height + 20)
+            {
+                TESTOBJ.Location = new Point(TESTOBJ.Location.X, TESTOBJ.Location.Y);
+            }
+            else if (TESTOBJ.Location.Y + 18 < -20)
+            {
+                TESTOBJ.Location = new Point(-18, TESTOBJ.Location.Y);
+            }
+        }
+
+        private void SpeedTick(object sender, EventArgs e)
+        {
+            int tops = (100 - SpeedControl.Value) / 10;
+            accel += 1;
+            if (accel >= tops)
+            {
+                accel = tops;
             }
         }
     }
