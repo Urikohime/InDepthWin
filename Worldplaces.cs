@@ -32,7 +32,7 @@ namespace InDepthWin
         private String[] ShopPlaces = { "Embassy of Trade", "Marketplace", "Caravan" };
 
         private String[] RandPeople = { "Settler", "Engineer", "Officer", "Pilot", "Miner", "Civilian", "Explorer", "Traveler", "Scientist", "Guard", "Nurse", "Doctor"};
-        private String[] MainPeople = { "Commander", "Leutnant", "Antonio", "Giz", "Saki", "Rose"};
+        private String[] MainPeople = { "Commander", "Lieutenant", "Antonio", "Giz", "Saki", "Rose"};
 
         private String[] MainPlaces = { "HQ", "Centres", "The Vault", "Saturn VI", "Cripton", "Uranus", "Void", "Sanctuary", "H. Heaven", "Demons Rift", "Angels Tears" };
         private String[] RandPlaces1 = { "ATX ", "BVV ", "COF ", "DTP ", "EEE ", "FHJ " , "EPE ", "XAX ", "PNS ", "GOF ", "XZN "};

@@ -386,12 +386,27 @@ namespace InDepthWin
                     SHOPTO(talkingto);
                 }
 
-                else if (TerminalIN.Text.ToUpper() == "BACK" && landed == true)
+                else if (TerminalIN.Text.ToUpper() == "BACK")
                 {
-                    PlaceWindow.Visible = false;
-                    MapWindow.Visible = true;
-                    CommandLog.Text = "TAKEOFF!";
-                    landed = false;
+                    if (landed)
+                    {
+                        PlaceWindow.Visible = false;
+                        MapWindow.Visible = true;
+                        CommandLog.Text = "TAKEOFF!";
+                        landed = false;
+                    }
+                    else if (fighting)
+                    {
+                        fighting = false;
+                        MapWindow.Visible = true;
+                        BattleWindow.Location = new Point(800, 0);
+                        BattleTitle.Text = "Fighting:";
+                        TESTOBJ.Location = new Point(10, 10);
+                        SpeedControl.Value = 0;
+                        TurnControl.Value = 0;
+                        BattleTimer.Enabled = false;
+                        SpeedTimer.Enabled = false;
+                    }
                 }
 
                 if (TerminalIN.Text.ToUpper() == "ATTACK")
