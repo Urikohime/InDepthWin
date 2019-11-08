@@ -378,7 +378,6 @@ namespace InDepthWin
                     world.ListPeople[talkingto].hasQuest = false;
                     player.Questdone(world.r.Next(50, 100));
                     TALKTO(talkingto, world.ListPeople[talkingto].QuestDone());
-
                 }
 
                 else if (TerminalIN.Text.ToUpper() == "SHOP" && talking == true && world.ListPeople[talkingto].IsTrader)
