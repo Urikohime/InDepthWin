@@ -9,7 +9,6 @@ namespace InDepthWin
 {
 	class Worldplaces
 	{
-        
 		public Random r = new Random();
         public GeneralTexts GT = new GeneralTexts();
         private int maxcapa = 1;
